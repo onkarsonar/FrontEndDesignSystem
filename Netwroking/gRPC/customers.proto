@@ -1,4 +1,6 @@
-syntax = "proto3";
+syntax = "proto3"; //We’re using version 3 of Protocol Buffers syntax.
+
+//service defines a set of remote functions (RPC methods) that a server offers for clients to call.
 
 service CustomerService {
     rpc GetAll (Empty) returns (CustomerList) {}
@@ -7,6 +9,8 @@ service CustomerService {
     rpc Update (Customer) returns (Customer) {}
     rpc Remove (CustomerRequestId) returns (Empty) {}
 }
+
+//A message is a data structure — like a class or object — that defines the format of the data being sent or received.
 
 message Empty {}
 

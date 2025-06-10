@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Long Polling Example</title>
+</head>
+
+<body>
+    <h1>Long Polling Example</h1>
+    <div id="data-container">
+
+    </div>
+
+    <script>
+
+
+        async function getData(lastData) {
+            try {
+                const response = await fetch(`/getData?lastData=${lastData}`);
+                const result = await response.json();
+                document.getElementById('data-container').innerHTML = result.data;
+                getData(result.data);
+ 
+            } catch (e) {
+                console.log(e);
+                //please handle error message as well which are realted most proabbly with timeout
+            }
+        }
+
+           getData();
+   
+    </script>
+
+</body>
+
+</html>
